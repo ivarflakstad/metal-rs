@@ -607,14 +607,20 @@ pub use {
     sync::*,
 };
 
+#[link(name = "objc", kind = "dylib")]
+extern {
+    fn objc_retain(obj: *mut Object) -> *mut Object;
+    fn objc_release(obj: *mut Object);
+}
+
 #[inline]
 unsafe fn obj_drop<T>(p: *mut T) {
-    msg_send![(p as *mut Object), release]
+    objc_release(p as *mut Object)
 }
 
 #[inline]
 unsafe fn obj_clone<T: 'static>(p: *mut T) -> *mut T {
-    msg_send![(p as *mut Object), retain]
+    objc_retain(p as *mut Object) as *mut T
 }
 
 #[allow(non_camel_case_types)]
