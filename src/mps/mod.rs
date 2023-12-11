@@ -6,7 +6,8 @@ use objc::runtime::{BOOL, YES};
 
 use super::*;
 
-pub mod matrix;
+pub mod matrix_multiplication;
+pub mod matrix_random;
 pub mod raytracing;
 
 #[cfg_attr(
@@ -31,6 +32,7 @@ pub enum MPSKernel {}
 foreign_obj_type! {
     type CType = MPSKernel;
     pub struct Kernel;
+    type ParentType = NsObject;
 }
 
 /// A value to specify a type of data.

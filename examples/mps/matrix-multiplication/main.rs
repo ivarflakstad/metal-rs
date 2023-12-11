@@ -5,7 +5,7 @@ use std::ops::{AddAssign, Mul};
 
 use rand::{thread_rng, Rng};
 
-use metal::mps::matrix::*;
+use metal::mps::matrix_multiplication::*;
 use metal::mps::*;
 use metal::*;
 
