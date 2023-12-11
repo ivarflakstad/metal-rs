@@ -86,26 +86,26 @@ impl MatrixDescriptor {
         }
     }
 
-    // fn init_multiple(
-    //     rows: NSUInteger,
-    //     columns: NSUInteger,
-    //     matrices: NSUInteger,
-    //     row_bytes: NSUInteger,
-    //     matrix_bytes: NSUInteger,
-    //     data_type: u32,
-    // ) -> Self {
-    //     unsafe {
-    //         msg_send![
-    //             class!(MPSMatrixDescriptor),
-    //             matrixDescriptorWithRows : rows
-    //                              columns : columns
-    //                             matrices : matrices
-    //                             rowBytes : row_bytes
-    //                          matrixBytes : matrix_bytes
-    //                             dataType : data_type
-    //         ]
-    //     }
-    // }
+    pub fn init_multiple(
+        rows: NSUInteger,
+        columns: NSUInteger,
+        matrices: NSUInteger,
+        row_bytes: NSUInteger,
+        matrix_bytes: NSUInteger,
+        data_type: u32,
+    ) -> Self {
+        unsafe {
+            msg_send![
+                class!(MPSMatrixDescriptor),
+                matrixDescriptorWithRows : rows
+                                 columns : columns
+                                matrices : matrices
+                                rowBytes : row_bytes
+                             matrixBytes : matrix_bytes
+                                dataType : data_type
+            ]
+        }
+    }
 
     pub fn row_bytes_for_columns(columns: NSUInteger, data_type: u32) -> NSUInteger {
         unsafe {
